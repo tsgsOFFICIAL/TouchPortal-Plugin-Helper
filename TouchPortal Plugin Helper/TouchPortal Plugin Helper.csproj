@@ -26,13 +26,12 @@
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
     <SupportUrl>https://discord.gg/Cddu5aJ</SupportUrl>
-    <ErrorReportUrl>https://discord.gg/Cddu5aJ</ErrorReportUrl>
     <TargetCulture>en</TargetCulture>
     <ProductName>TouchPortal Plugin Helper</ProductName>
     <PublisherName>tsgsOFFICIAL</PublisherName>
     <SuiteName>TouchPortal Plugin Helper</SuiteName>
     <ApplicationRevision>8</ApplicationRevision>
-    <ApplicationVersion>0.2.5.%2a</ApplicationVersion>
+    <ApplicationVersion>0.2.5.8</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <PublishWizardCompleted>true</PublishWizardCompleted>
     <BootstrapperEnabled>true</BootstrapperEnabled>
@@ -76,7 +75,8 @@
     <SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <PropertyGroup>
-    <AssemblyOriginatorKeyFile>TouchPortal Plugin Helper_TemporaryKey.pfx</AssemblyOriginatorKeyFile>
+    <AssemblyOriginatorKeyFile>
+    </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup />
   <ItemGroup>
@@ -200,7 +200,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="TouchPortal Plugin Helper_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

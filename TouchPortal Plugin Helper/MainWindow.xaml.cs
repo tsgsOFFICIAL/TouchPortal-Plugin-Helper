@@ -9,6 +9,7 @@ using System.Collections.Generic;
 using System.Net.NetworkInformation;
 using System.Threading.Tasks;
 using System.Threading;
+using System.Reflection;
 
 namespace TouchPortal_Plugin_Helper
     {
@@ -89,7 +90,12 @@ namespace TouchPortal_Plugin_Helper
             //Create a new instance of WebClient, and search for the current version
             WebClient client = new WebClient();
             Ping pingSender = new Ping();
-            int[] _clientVersion = { 0, 2, 5, 7 };
+            string[] tempVersion = Assembly.GetExecutingAssembly().GetName().Version.ToString().Split('.');
+            int[] _clientVersion = new int[4];
+            for (int i = 0; i < _clientVersion.Length; i++)
+                {
+                _clientVersion[i] = int.Parse(tempVersion[i]);
+                }
             List<int> _serverVersion = new List<int>();
 
             //Send a ping to see if there is a connection
@@ -185,43 +191,5 @@ namespace TouchPortal_Plugin_Helper
                 }
             catch (Exception) { }
             }
-
-        //public void SetActivePage(string name) {
-        //    switch (name) {
-        //        case "home":
-        //            GoHome.BorderBrush = Brushes.LawnGreen;
-        //            GoCreate.BorderBrush = Brushes.Transparent;
-        //            GoEdit.BorderBrush = Brushes.Transparent;
-        //            break;
-        //        case "category":
-        //            GoHome.BorderBrush = Brushes.Transparent;
-        //            GoCreate.BorderBrush = Brushes.LawnGreen;
-        //            GoEdit.BorderBrush = Brushes.Transparent;
-        //            break;
-        //        case "edit":
-        //            GoHome.BorderBrush = Brushes.Transparent;
-        //            GoCreate.BorderBrush = Brushes.Transparent;
-        //            GoEdit.BorderBrush = Brushes.LawnGreen;
-        //            break;
-        //        default:
-        //            GoHome.BorderBrush = Brushes.Transparent;
-        //            GoCreate.BorderBrush = Brushes.Transparent;
-        //            GoEdit.BorderBrush = Brushes.Transparent;
-        //            break;
-        //        }
-        //    }
-
-        ////Start Async
-        //private async void StartAsync() {
-        //    await Task.Run(new Action(ActivateAsync));
-        //    }
-
-        ////void method
-        //private void ActivateAsync() {
-        //    while (!CheckForUpdates()) {
-        //        Thread.Sleep(30000);
-        //        }
-        //    }
-
         }
     }

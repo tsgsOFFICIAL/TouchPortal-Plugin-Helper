@@ -8,11 +8,11 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("TouchPortal Plugin Helper")]
-[assembly: AssemblyDescription("Unofficial helper for making plugins for TouchPortal.")]
+[assembly: AssemblyDescription("Unofficial tool for creating and editing the TouchPortal plugin files")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("tsgsOFFICIAL")]
 [assembly: AssemblyProduct("TouchPortal Plugin Helper")]
-[assembly: AssemblyCopyright("Copyright ©tsgsOFFICIAL, 2020")]
+[assembly: AssemblyCopyright("Copyright © tsgsOFFICIAL, 2020")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -51,6 +51,6 @@ using System.Windows;
 // You can specify all the values or you can default the Build and Revision Numbers
 // by using the '*' as shown below:
 // [assembly: AssemblyVersion("1.0.*")]
-[assembly: AssemblyVersion("1.0.0.0")]
-[assembly: AssemblyFileVersion("0.2.5.8")]
+[assembly: AssemblyVersion("0.2.5.8")]
+[assembly: AssemblyFileVersion("0.0.0.0")]
 [assembly: NeutralResourcesLanguage("en")]
