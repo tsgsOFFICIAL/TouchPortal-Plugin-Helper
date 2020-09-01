@@ -74,6 +74,9 @@ namespace TouchPortal_Plugin_Helper
         /// <returns></returns>
         private string CheckFileType(string FullFileName)
             {
+            try
+            {
+
             string _file = FullFileName.Substring(FullFileName.LastIndexOf('\\') + 1, FullFileName.Length - FullFileName.LastIndexOf('\\') - 1);
             string _filePath = FullFileName.Substring(0, FullFileName.Length - FullFileName.LastIndexOf('.'));
 
@@ -86,6 +89,11 @@ namespace TouchPortal_Plugin_Helper
             string Extension = _temp[1]; //Get the extension
 
             return Extension; //Return the extension
+            }
+            catch (Exception)
+            {
+                return "folder";
+            }
             }
 
         //Check if the .tp file is valid
