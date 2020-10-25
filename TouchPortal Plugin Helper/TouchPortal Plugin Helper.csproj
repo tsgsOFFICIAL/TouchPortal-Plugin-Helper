@@ -79,6 +79,9 @@
     </AssemblyOriginatorKeyFile>
   </PropertyGroup>
   <PropertyGroup />
+  <PropertyGroup>
+    <StartupObject>TouchPortal_Plugin_Helper.App</StartupObject>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -111,6 +114,7 @@
     <Compile Include="Event_Editor.xaml.cs">
       <DependentUpon>Event_Editor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="PHPMaster.cs" />
     <Compile Include="Report.xaml.cs">
       <DependentUpon>Report.xaml</DependentUpon>
     </Compile>

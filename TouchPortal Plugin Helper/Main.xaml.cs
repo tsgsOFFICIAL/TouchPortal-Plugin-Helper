@@ -66,9 +66,9 @@ namespace TouchPortal_Plugin_Helper
                     }
                     catch (Exception)
                     {
-
+                        TextBox_DarkColor.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                     }
-                    
+
                 }
                 if (File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\backup\lightColor.TPPH") != null)
                 {
@@ -79,7 +79,7 @@ namespace TouchPortal_Plugin_Helper
                     }
                     catch (Exception)
                     {
-
+                        TextBox_LightColor.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
                     }
                 }
                 if (File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\backup\startCMD.TPPH") != null)
@@ -162,25 +162,35 @@ namespace TouchPortal_Plugin_Helper
 
         private void TextBox_DarkColor_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!TextBox_DarkColor.Text.Contains("#"))
+            {
+                string temp = TextBox_DarkColor.Text;
+                TextBox_DarkColor.Text = "#" + temp;
+            }
             try
             {
                 TextBox_DarkColor.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(TextBox_DarkColor.Text));
             }
             catch (Exception)
             {
-
+                TextBox_DarkColor.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             }
         }
 
         private void TextBox_LightColor_TextChanged(object sender, TextChangedEventArgs e)
         {
+            if (!TextBox_LightColor.Text.Contains("#"))
+            {
+                string temp = TextBox_LightColor.Text;
+                TextBox_LightColor.Text = "#" + temp;
+            }
             try
             {
                 TextBox_LightColor.Background = new SolidColorBrush((Color)ColorConverter.ConvertFromString(TextBox_LightColor.Text));
             }
             catch (Exception)
             {
-
+                TextBox_LightColor.Background = new SolidColorBrush(Color.FromRgb(255, 255, 255));
             }
         }
     }
