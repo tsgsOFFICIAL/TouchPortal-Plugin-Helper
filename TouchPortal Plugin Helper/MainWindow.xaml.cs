@@ -95,7 +95,8 @@ namespace TouchPortal_Plugin_Helper
             try
             {
                 //Convert the array to a list
-                foreach (string onlineVersion in client.DownloadString("https://eliteeleverne.dk/FileStorage/projects/TouchPortalPluginHelper/version.txt").Split('.')) {
+                foreach (string onlineVersion in client.DownloadString("https://eliteeleverne.dk/FileStorage/projects/TouchPortalPluginHelper/version.txt").Split('.'))
+                {
                     _serverVersion.Add(Convert.ToInt32(onlineVersion));
                 }
 
