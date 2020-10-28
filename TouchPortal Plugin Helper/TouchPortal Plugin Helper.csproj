@@ -247,5 +247,8 @@
   <ItemGroup>
     <Resource Include="resources\color_wheel.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FileTree.txt" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
