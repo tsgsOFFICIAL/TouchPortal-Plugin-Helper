@@ -30,7 +30,7 @@ namespace TouchPortal_Plugin_Helper
         //Define value choices
         private void DefineValueChoicesBtnClick(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new DefineValueChoices());
+            NavigationService.Navigate(new DefineValueChoicesEvent());
         }
 
         private void TypeDropDownLeftClick(object sender, MouseButtonEventArgs e)

@@ -114,6 +114,9 @@
     <Compile Include="DefineValueChoicesEvent.xaml.cs">
       <DependentUpon>DefineValueChoicesEvent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DefineValueChoicesState.xaml.cs">
+      <DependentUpon>DefineValueChoicesState.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Event_Editor.xaml.cs">
       <DependentUpon>Event_Editor.xaml</DependentUpon>
     </Compile>
@@ -141,6 +144,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DefineValueChoicesEvent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DefineValueChoicesState.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
