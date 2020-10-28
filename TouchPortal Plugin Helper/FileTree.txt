@@ -1,6 +1,8 @@
 ﻿TouchPortalPluginHelper
 {
 	active_action.TPPH
+	active_event.TPPH
+	active_state.TPPH
 	active_category.TPPH
 	active_data.TPPH
 	backup
