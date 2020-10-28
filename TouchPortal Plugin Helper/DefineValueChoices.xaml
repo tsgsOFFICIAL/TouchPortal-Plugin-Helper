@@ -1,4 +1,4 @@
-﻿<Page x:Class="TouchPortal_Plugin_Helper.AddActionData"
+﻿<Page x:Class="TouchPortal_Plugin_Helper.DefineValueChoices"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -6,7 +6,7 @@
       xmlns:local="clr-namespace:TouchPortal_Plugin_Helper"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="AddActionData">
+      Title="DefineValueChoices">
 
     <Page.Resources>
         <SolidColorBrush x:Key="TextBox.Static.Border" Color="#FFABAdB3"/>
@@ -216,78 +216,29 @@
             </Style.Triggers>
         </Style>
 
-        <ContextMenu x:Key="cmData">
-            <MenuItem Header="Rename (Does not work rn)" Click="DataRename">
+        <ContextMenu x:Key="cm">
+            <MenuItem Header="Rename (Does not work rn)" Click="Rename">
                 <MenuItem.Icon>
                     <Image Source="resources/pencil.png" />
                 </MenuItem.Icon>
             </MenuItem>
-            <MenuItem Header="Remove" Click="DataRemove">
+            <MenuItem Header="Remove" Click="Remove">
                 <MenuItem.Icon>
                     <Image Source="resources/bin.png" />
                 </MenuItem.Icon>
             </MenuItem>
         </ContextMenu>
-
-        <ContextMenu x:Key="cmDataChoices">
-            <MenuItem Header="Rename (Does not work rn)" Click="DataChoicesRename">
-                <MenuItem.Icon>
-                    <Image Source="resources/pencil.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-            <MenuItem Header="Remove" Click="DataChoicesRemove">
-                <MenuItem.Icon>
-                    <Image Source="resources/bin.png" />
-                </MenuItem.Icon>
-            </MenuItem>
-        </ContextMenu>
-
     </Page.Resources>
 
     <Grid>
         <!-- Listbox 1 -->
-        <TextBlock Text="Action Data" Margin="10 30 0 400" Width="150" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="14" TextAlignment="Center" Foreground="GhostWhite"/>
+        <TextBlock Text="Value Choices" Margin="10 30 0 400" Width="150" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="14" TextAlignment="Center" Foreground="GhostWhite"/>
         <Border Background="LightSlateGray" Margin="10 50 0 0" Height="350" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <ListBox x:Name="DataListBox" Background="Transparent" Foreground="GhostWhite" BorderThickness="0" KeyDown="DataDeleteKeyDown" SelectionChanged="DataSelectionChanged" MouseDown="DataMouseDown">
-            </ListBox>
+            <ListBox x:Name="ValueChoiceListBox" Background="Transparent" Foreground="GhostWhite" BorderThickness="0" KeyDown="ValueChoiceDeleteKeyDown" MouseDown="ValueChoiceMouseDown"></ListBox>
         </Border>
-        <TextBox x:Name="DataTextBox" Height="20" Width="150" Margin="10,0,0,28" HorizontalAlignment="Left" VerticalAlignment="Bottom" KeyDown="DataKeyDown"/>
-        <Button Height="20" Width="50" Margin="111,0,0,7" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="SemiBold" FontFamily="Roboto" FontSize="14" Content="CLEAR" Style="{DynamicResource AddButton}" Cursor="Hand" Click="ClearDataList"/>
-        <Button Height="20" Width="50" Margin="60,0,0,7" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Roboto" FontSize="14" Content="+" ToolTip="HINT: You can just press the enter key ;)" Style="{DynamicResource AddButton}" Cursor="Hand" Click="AddDataButton"/>
-        <Button Height="20" Width="50" Margin="9,0,0,7" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Roboto" FontSize="14" Content="-" ToolTip="HINT: You can just press the delete or backspace key on a selected item ;)" Style="{DynamicResource AddButton}" Cursor="Hand" Click="RemoveDataButton"/>
-
-        <!-- Listbox 2 -->
-        <Border Background="LightSlateGray" Margin="351,154,0,0" Height="180" Width="122" HorizontalAlignment="Left" VerticalAlignment="Top">
-            <ListBox x:Name="DataChoicesListBox" Background="Transparent" Foreground="GhostWhite" BorderThickness="0" KeyDown="DataChoicesDeleteKeyDown" MouseDown="DataChoicesMouseDown">
-            </ListBox>
-        </Border>
-        <TextBox x:Name="DataChoicesTextBox" Height="20" Width="122" Margin="351,0,0,94" HorizontalAlignment="Left" VerticalAlignment="Bottom" KeyDown="DataChoicesKeyDown"/>
-        <Button Height="20" Width="44" Margin="430,0,0,74" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="SemiBold" FontFamily="Roboto" FontSize="12" Content="CLEAR" Style="{DynamicResource AddButton}" Cursor="Hand" Click="ClearDataChoicesList"/>
-        <Button Height="20" Width="40" Margin="390,0,0,74" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Roboto" FontSize="14" Content="+" ToolTip="HINT: You can just press the enter key ;)" Style="{DynamicResource AddButton}" Cursor="Hand" Click="AddDataChoicesButton"/>
-        <Button Height="20" Width="40" Margin="350,0,0,74" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Roboto" FontSize="14" Content="-" ToolTip="HINT: You can just press the delete or backspace key on a selected item ;)" Style="{DynamicResource AddButton}" Cursor="Hand" Click="RemoveDataChoicesButton"/>
-
-        <Label Content="*Data Label:" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="194,50,511,374" ToolTip="This is the text used in the popup windows"/>
-        <Label Content="*Data ID:" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="194,76,532,348" ToolTip="This is the id of the data field. Touch Portal will use this for communicating the values or to place the values in the result."/>
-        <Label Content="*Data Type:" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="194,102,511,320" ToolTip="The type of data:&#x0a;text = A data type that accepts a string&#x0a;number = A data type that accepts a number&#x0a;switch = A data type that accepts a true or false value&#x0a;choice = A data type that accepts a string where a collection of strings can be chosen from&#x0a;file = A data type that represents a file which the user can pick with a file chooser&#x0a;folder = A data type that represents a folder which the user can pick with a folder chooser&#x0a;color = A data type that represents a color which the user can pick with a color chooser. This value must be in a the format #RRGGBBAA."/>
-        <Label Content="*Data Default Value:" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="194,128,454,296" ToolTip="This is the default value the data object has. Use the correct types of data for the correct type of data object. Eg: The switch data object expects a true or false here"/>
-        <Label Content="*Data Value choices:" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="194,154,454,270" ToolTip="This is a collection of strings that the user can choose from"/>
-        <Label Content="Data Extensions:" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="194,402,482,22" ToolTip="This is a collection of extensions allowed to open. This only has effect when used with the file type.&#x0a;eg: &quot;extensions&quot;: [&quot;*.jpg&quot;,&quot;*.png&quot;,]"/>
-
-        <!-- Input -->
-        <TextBox x:Name="dataLabel" Background="#282828" BorderBrush="Transparent" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="348,50,221,374" Style="{DynamicResource TextBoxStyling}" TextChanged="dataLabel_TextChanged" IsEnabled="False" LostFocus="dataLabel_LostFocus"/>
-        <TextBox x:Name="dataID" Background="#282828" BorderBrush="Transparent" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="348,76,221,348" Style="{DynamicResource TextBoxStyling}" TextChanged="dataID_TextChanged" IsEnabled="False"/>
-        <ComboBox x:Name="DataTypeComboBox" Margin="348,102,221,323" BorderBrush="Transparent" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Foreground="GhostWhite" Background="#282828" SelectedIndex="-1" SelectionChanged="DataTypeComboBox_SelectionChanged" Focusable="False" IsHitTestVisible="False">
-            <ComboBoxItem Content="Text"/>
-            <ComboBoxItem Content="Number"/>
-            <ComboBoxItem Content="Switch"/>
-            <ComboBoxItem Content="Choice"/>
-            <ComboBoxItem Content="File"/>
-            <ComboBoxItem Content="Folder"/>
-            <ComboBoxItem Content="Color"/>
-        </ComboBox>
-        <Label x:Name="DataTypeLabel" Content="&#8595;" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="557,100,221,320" Focusable="False" MouseLeftButtonDown="Label_MouseLeftButtonDown" IsEnabled="False"/>
-
-        <TextBox x:Name="DataDefaultValue" Margin="348,127,221,298" BorderBrush="Transparent" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Foreground="GhostWhite" Background="#282828" TextChanged="DataDefaultValue_TextChanged" IsEnabled="False"/>
-        <TextBox x:Name="dataExtensions" Background="#282828" BorderBrush="Transparent" Foreground="GhostWhite" FontFamily="Roboto" FontSize="16" FontWeight="Thin" Margin="348,402,221,22" Style="{DynamicResource TextBoxStyling}" TextChanged="dataExtensions_TextChanged" IsEnabled="False"/>
+        <TextBox x:Name="ValueChoiceTextBox" Height="20" Width="150" Margin="10,0,0,28" HorizontalAlignment="Left" VerticalAlignment="Bottom" KeyDown="ValueChoiceKeyDown"/>
+        <Button Height="20" Width="50" Margin="111,0,0,7" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontWeight="SemiBold" FontFamily="Roboto" FontSize="14" Content="CLEAR" Style="{DynamicResource AddButton}" Cursor="Hand" Click="ClearValueChoiceList"/>
+        <Button Height="20" Width="50" Margin="60,0,0,7" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Roboto" FontSize="14" Content="+" ToolTip="HINT: You can just press the enter key ;)" Style="{DynamicResource AddButton}" Cursor="Hand" Click="AddValueChoiceButton"/>
+        <Button Height="20" Width="50" Margin="9,0,0,7" HorizontalAlignment="Left" VerticalAlignment="Bottom" FontFamily="Roboto" FontSize="14" Content="-" ToolTip="HINT: You can just press the delete or backspace key on a selected item ;)" Style="{DynamicResource AddButton}" Cursor="Hand" Click="RemoveValueChoiceButton"/>
     </Grid>
 </Page>

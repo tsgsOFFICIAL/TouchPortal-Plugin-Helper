@@ -202,7 +202,7 @@
                 </Setter.Value>
             </Setter>
         </Style>
-        
+
         <LinearGradientBrush x:Key="NormalBrush" StartPoint="0,0" EndPoint="0,1">
             <GradientBrush.GradientStops>
                 <GradientStopCollection>
@@ -254,7 +254,7 @@
             <Style.Triggers>
             </Style.Triggers>
         </Style>
-        
+
     </Page.Resources>
 
     <Grid LostFocus="Grid_LostFocus">
