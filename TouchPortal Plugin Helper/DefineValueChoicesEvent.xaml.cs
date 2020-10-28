@@ -58,7 +58,7 @@ namespace TouchPortal_Plugin_Helper
         //ClearValueChoiceList Button
         private void ClearValueChoiceList(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to clear the data list?\nThis action cannot be undone", "TouchPortal Plugin Helper", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            if (MessageBox.Show("Are you sure you want to clear the list?\nThis action cannot be undone", "TouchPortal Plugin Helper", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
             {
                 ValueChoiceListBox.Items.Clear();
 

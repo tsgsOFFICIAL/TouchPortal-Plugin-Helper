@@ -111,8 +111,8 @@
     <Compile Include="AddActionData.xaml.cs">
       <DependentUpon>AddActionData.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DefineValueChoices.xaml.cs">
-      <DependentUpon>DefineValueChoices.xaml</DependentUpon>
+    <Compile Include="DefineValueChoicesEvent.xaml.cs">
+      <DependentUpon>DefineValueChoicesEvent.xaml</DependentUpon>
     </Compile>
     <Compile Include="Event_Editor.xaml.cs">
       <DependentUpon>Event_Editor.xaml</DependentUpon>
@@ -140,7 +140,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DefineValueChoices.xaml">
+    <Page Include="DefineValueChoicesEvent.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
