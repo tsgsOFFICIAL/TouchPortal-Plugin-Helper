@@ -328,7 +328,7 @@ namespace TouchPortal_Plugin_Helper
                 ListBoxItem _event = new ListBoxItem();
                 _event.Content = _content;
                 _event.ToolTip = "Right click to edit (Or double click)";
-                _event.AddHandler(MouseRightButtonDownEvent, new MouseButtonEventHandler(ActionRightClick), true);
+                _event.AddHandler(MouseRightButtonDownEvent, new MouseButtonEventHandler(EventRightClick), true);
 
                 EventsListBox.Items.Add(_event); //Pass our object to the list
                 EventsTextBox.Text = ""; //Clear the input field
@@ -387,7 +387,7 @@ namespace TouchPortal_Plugin_Helper
                 ListBoxItem _state = new ListBoxItem();
                 _state.Content = _content;
                 _state.ToolTip = "Right click to edit (Or double click)";
-                _state.AddHandler(MouseRightButtonDownEvent, new MouseButtonEventHandler(ActionRightClick), true);
+                _state.AddHandler(MouseRightButtonDownEvent, new MouseButtonEventHandler(StateRightClick), true);
 
                 StatesListBox.Items.Add(_state); //Pass our object to the list
                 StatesTextBox.Text = ""; //Clear the input field

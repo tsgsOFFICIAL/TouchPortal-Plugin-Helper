@@ -125,7 +125,7 @@ namespace TouchPortal_Plugin_Helper
         {
             if (e.RightButton == MouseButtonState.Pressed)
             {
-                ContextMenu cm = (ContextMenu)Resources["cmValueChoice"];
+                ContextMenu cm = (ContextMenu)Resources["cm"];
                 cm.IsOpen = true;
             }
         }
