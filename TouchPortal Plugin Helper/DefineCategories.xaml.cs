@@ -836,19 +836,5 @@ namespace TouchPortal_Plugin_Helper
             catch (Exception) { }
             return _directoryCount;
         }
-
-        private void Grid_LostFocus(object sender, RoutedEventArgs e)
-        {
-            Backup();
-        }
-
-        private void Backup()
-        {
-            if (ActionsListBox.SelectedIndex != -1)
-            {
-                File.WriteAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\active_action.TPPH", ActionsListBox.SelectedIndex.ToString());
-            }
-        }
-
     }
 }

@@ -172,7 +172,7 @@
         </ContextMenu>
     </Page.Resources>
 
-    <Grid LostFocus="Grid_LostFocus">
+    <Grid>
         <!-- Categories border -->
         <TextBlock Text="Categories" Margin="10 30 0 400" Width="150" HorizontalAlignment="Left" FontFamily="Roboto" FontSize="14" TextAlignment="Center" Foreground="GhostWhite"/>
         <Border Background="LightSlateGray" Margin="10 50 0 0" Height="350" Width="150" HorizontalAlignment="Left" VerticalAlignment="Top">

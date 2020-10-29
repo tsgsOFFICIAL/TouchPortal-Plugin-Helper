@@ -18,7 +18,6 @@ namespace TouchPortal_Plugin_Helper
         private void CreateCategoriesClick(object sender, RoutedEventArgs e)
         {
             //Switch page in the frame to DefineCategories
-            Directory.CreateDirectory($@"{Path.GetTempPath()}\TouchPortalPluginHelper\temp");
             NavigationService.Navigate(new DefineCategories());
         }
 

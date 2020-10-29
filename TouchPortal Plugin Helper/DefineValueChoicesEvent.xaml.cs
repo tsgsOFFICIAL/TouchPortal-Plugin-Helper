@@ -65,7 +65,7 @@ namespace TouchPortal_Plugin_Helper
                 //Delete all data, and everything held by them
                 try
                 {
-                    //Directory.Delete($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data", true);
+                    File.Delete($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\events\event{FindActiveEvent()}\valueChoices.TPPH");
                 }
                 catch (Exception) { }
             }
@@ -92,19 +92,9 @@ namespace TouchPortal_Plugin_Helper
         //Add ValueChoice 
         private void AddValueChoice(string _content)
         {
-            int dataNumber = 0;
             try
             {
-                dataNumber = Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\").Length;
-            }
-            catch (Exception)
-            { }
-
-            //Create a new data dir
-            try
-            {
-                Directory.CreateDirectory($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\data{dataNumber}");
-                File.WriteAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\data{dataNumber}\name.TPPH", _content);
+                File.AppendAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\events\event{FindActiveEvent()}\valueChoices.TPPH", _content + "\n");
             }
             catch (Exception)
             { }
@@ -150,23 +140,19 @@ namespace TouchPortal_Plugin_Helper
             //Remove from backend
             try
             {
-                //Directory.Delete($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\data{FindActiveValueChoice()}", true);
+                string[] temp = File.ReadAllLines($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\events\event{FindActiveEvent()}\valueChoices.TPPH");
+                List<string> temp2 = new List<string>();
+                for (int i = 0; i < temp.Length; i++)
+                {
+                    if (i != _index)
+                    {
+                        temp2.Add(temp[i]);
+                    }
+                }
+                File.WriteAllLines($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\events\event{FindActiveEvent()}\valueChoices.TPPH", temp2);
             }
             catch (Exception)
             { }
-
-            //Re-arrange actions, matching the index numbers
-            for (int i = 0; i < ValueChoiceListBox.Items.Count; i++)
-            {
-                if (!Directory.Exists($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\data{i}"))
-                {
-                    try
-                    {
-                        Directory.Move($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\data{i + 1}", $@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\actions\action{FindActiveAction()}\data\data{i}");
-                    }
-                    catch (Exception) { }
-                }
-            }
         }
 
         //Find the active category
@@ -182,37 +168,35 @@ namespace TouchPortal_Plugin_Helper
         }
 
         //Find the active action
-        private string FindActiveAction()
+        private string FindActiveEvent()
         {
             string _activeAction = null;
             try
             {
-                _activeAction = File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\active_action.TPPH");
+                _activeAction = File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\active_event.TPPH");
             }
             catch (Exception) { }
             return _activeAction;
         }
-
-        private string FindActiveData()
+        private void Restore()
         {
-            string _activeData = null;
             try
             {
-                _activeData = File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\active_data.TPPH");
+                string[] choices = File.ReadAllLines($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{FindActiveCategory()}\events\event{FindActiveEvent()}\valueChoices.TPPH");
+                foreach (string choice in choices)
+                {
+                    ListBoxItem item = new ListBoxItem();
+                    item.Content = choice;
+                    item.ToolTip = "Right click to edit";
+                    item.AddHandler(MouseRightButtonDownEvent, new MouseButtonEventHandler(ValueChoiceListRightClick), true);
+
+                    ValueChoiceListBox.Items.Add(item); //Pass our object to the list
+                    ValueChoiceTextBox.Text = ""; //Clear the input field
+                    ValueChoiceListBox.SelectedItem = item; //Select our newly passed object
+                }
             }
             catch (Exception)
             { }
-            return _activeData;
-        }
-
-        private void Backup()
-        {
-
-        }
-
-        private void Restore()
-        {
-
         }
     }
 }

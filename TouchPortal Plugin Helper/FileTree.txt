@@ -51,6 +51,12 @@
 				event[i]
 				{
 					name.TPPH
+					format.TPPH
+					id.TPPH
+					stateID.TPPH
+					type.TPPH
+					value.TPPH
+					valueChoices.TPPH
 				}
 			}
 			states
@@ -58,6 +64,11 @@
 				state[i]
 				{
 					name.TPPH
+					default.TPPH
+					desc.TPPH
+					id.TPPH
+					type.TPPH
+					valueChoices.TPPH
 				}
 			}
 		}

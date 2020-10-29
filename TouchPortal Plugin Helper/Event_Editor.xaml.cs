@@ -6,9 +6,6 @@ using System.Windows.Input;
 
 namespace TouchPortal_Plugin_Helper
 {
-    /// <summary>
-    /// Interaction logic for Event_Editor.xaml
-    /// </summary>
     public partial class Event_Editor : Page
     {
         public Event_Editor()
@@ -98,7 +95,7 @@ namespace TouchPortal_Plugin_Helper
         private void Restore()
         {
             string name = "", id = "", format = "", type = "", value = "", stateID = "";
-            string[] valueChoices = null;
+            string[] valueChoices = new string[0];
             //Name
             try
             {
