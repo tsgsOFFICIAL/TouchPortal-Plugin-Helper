@@ -123,7 +123,7 @@
         <StackPanel Width="300" Height="20" Margin="0 5 40 5" VerticalAlignment="Top" Orientation="Horizontal">
             <Button x:Name="GoHome" BorderThickness="0,0,0,1" Foreground="GhostWhite" FontWeight="SemiBold" FontFamily="Roboto" Background="Transparent" BorderBrush="Transparent" Content="Plugin info" Cursor="Hand" Click="Button_Click_ReturnHome" Style="{DynamicResource ButtonStyle1}"/>
             <Button x:Name="GoCreate" BorderThickness="0,0,0,1" Foreground="GhostWhite" FontWeight="SemiBold" FontFamily="Roboto" Background="Transparent" BorderBrush="Transparent" Margin="10,0,0,0" Content="Create categories" Cursor="Hand" Click="Button_Click_DefineActions" Style="{DynamicResource ButtonStyle1}"/>
-            <Button x:Name="GoEdit" BorderThickness="0,0,0,1" Foreground="GhostWhite" FontWeight="SemiBold" FontFamily="Roboto" Background="Transparent" BorderBrush="Transparent" Margin="10,0,0,0" Content="Edit an existing file" Cursor="Hand" Click="Button_Click_Edit" Style="{DynamicResource ButtonStyle1}"/>
+            <Button x:Name="GoEdit" BorderThickness="0,0,0,1" Foreground="GhostWhite" FontWeight="SemiBold" FontFamily="Roboto" Background="Transparent" BorderBrush="Transparent" Margin="10,0,0,0" Content="Import/Export" Cursor="Hand" Click="Button_Click_Edit" Style="{DynamicResource ButtonStyle1}"/>
         </StackPanel>
 
         <!-- Update warning -->
