@@ -191,24 +191,24 @@ namespace TouchPortal_Plugin_Helper
                                 $"\t\t\t\t\t\"name\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\name.TPPH")}\",\n" +
                                 $"\t\t\t\t\t\"type\":\"{_type}\",\n";
                             //CMD
-                            if (!File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\cmd.TPPH")).Trim().Equals(""))
+                            if (!File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\cmd.TPPH").Trim().Equals(""))
                             {
-                                export += $"\t\t\t\t\t\"execution_cmd\":\"{File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\cmd.TPPH"))}\",\n";
+                                export += $"\t\t\t\t\t\"execution_cmd\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\cmd.TPPH")}\",\n";
                             }
                             //Description
-                            if (!File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\description.TPPH")).Trim().Equals(""))
+                            if (!File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\description.TPPH").Trim().Equals(""))
                             {
-                                export += $"\t\t\t\t\t\"description\":\"{File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\description.TPPH"))}\",\n";
+                                export += $"\t\t\t\t\t\"description\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\description.TPPH")}\",\n";
                             }
                             //Format
-                            if (!File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\format.TPPH")).Trim().Equals(""))
+                            if (!File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\format.TPPH").Trim().Equals(""))
                             {
-                                export += $"\t\t\t\t\t\"format\":\"{File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\format.TPPH"))}\",\n";
+                                export += $"\t\t\t\t\t\"format\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\format.TPPH")}\",\n";
                             }
                             //Try inline
-                            if (!File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\inline.TPPH")).Trim().Equals(""))
+                            if (!File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\inline.TPPH").Trim().Equals(""))
                             {
-                                export += $"\t\t\t\t\t\"tryInline\":{File.ReadAllText(File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\inline.TPPH")).ToLower()},\n";
+                                export += $"\t\t\t\t\t\"tryInline\":{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\inline.TPPH").ToLower()},\n";
                             }
                             //Data
                             if (Directory.Exists($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data"))
@@ -219,7 +219,7 @@ namespace TouchPortal_Plugin_Helper
                                     export += "\t\t\t\t\t\t{\n" +
                                         $"\t\t\t\t\t\t\t\"id\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data\data{k}\id.TPPH")}\",\n" +
                                         $"\t\t\t\t\t\t\t\"type\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data\data{k}\type.TPPH")}\",\n" +
-                                        $"\t\t\t\t\t\t\t\"label\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data\data{k}\label.TPPH")}\",\n";
+                                        $"\t\t\t\t\t\t\t\"label\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data\data{k}\name.TPPH")}\",\n";
                                     if (File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data\data{k}\type.TPPH").Trim().ToLower().Equals("text"))
                                     {
                                         export += $"\t\t\t\t\t\t\t\"default\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions\action{j}\data\data{k}\defaultValue.TPPH")}\",\n";
@@ -248,7 +248,7 @@ namespace TouchPortal_Plugin_Helper
                                 }
                                 export += "\t\t\t\t\t]\n"; //End of data
                             }
-                            if (j == Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions").Length)
+                            if (j == Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\actions").Length - 1)
                             {
                                 export += "\t\t\t\t}\n" +
                                     "\t\t\t],\n"; //End of actions
@@ -276,7 +276,7 @@ namespace TouchPortal_Plugin_Helper
                             }
                             export += "\t\t\t\t\t],\n" +
                                 $"\t\t\t\t\t\"valueStateId\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\events\event{j}\stateID.TPPH")}\",\n";
-                            if (j == Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\events").Length)
+                            if (j == Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\events").Length - 1)
                             {
                                 export += "\t\t\t\t}\n" +
                                     "\t\t\t],\n"; //End of events
@@ -307,7 +307,7 @@ namespace TouchPortal_Plugin_Helper
                                 }
                                 export += "\t\t\t\t\t],\n";
                             }
-                            if (j == Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\states").Length)
+                            if (j == Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\states").Length - 1)
                             {
                                 export += "\t\t\t\t}\n" +
                                     "\t\t\t]\n"; //End of states
@@ -325,6 +325,7 @@ namespace TouchPortal_Plugin_Helper
                     try
                     {
                         File.WriteAllText(ExportLocation.Text, export);
+                        MessageBox.Show("Successfully written!", "TouchPortal Plugin Helper", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception)
                     {
