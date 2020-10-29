@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using System.Windows.Navigation;
 using System.Collections.Generic;
 using System.Security.Authentication.ExtendedProtection;
+using System.Diagnostics;
 
 namespace TouchPortal_Plugin_Helper
 {
@@ -170,7 +171,7 @@ namespace TouchPortal_Plugin_Helper
                         //Category img
                         if (!File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\img.TPPH").Trim().Equals(""))
                         {
-                            export += $"\t\t\t\"imagepath\":\"{File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\img.TPPH")}\",\n";
+                            export += $"\t\t\t\"imagepath\":\"img{i}.png\",\n";
                         }
                         //Category actions
                         export += "\t\t\t\"actions\":[\n";
@@ -324,7 +325,19 @@ namespace TouchPortal_Plugin_Helper
                     }
                     try
                     {
-                        File.WriteAllText(ExportLocation.Text, export);
+                        Directory.CreateDirectory(ExportLocation.Text);
+                        File.WriteAllText(ExportLocation.Text + "\\entry.tp", export);
+                        for (int i = 0; i < Directory.GetDirectories($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories").Length; i++)
+                        {
+                            try
+                            {
+                                string path = File.ReadAllText($@"{Path.GetTempPath()}\TouchPortalPluginHelper\categories\category{i}\img.TPPH");
+                                File.Copy(path, $@"{ExportLocation.Text}\img{i}.png");
+                            }
+                            catch (Exception)
+                            { }
+                        }
+                        Process.Start(ExportLocation.Text); //Open the folder
                         MessageBox.Show("Successfully written!", "TouchPortal Plugin Helper", MessageBoxButton.OK, MessageBoxImage.Information);
                     }
                     catch (Exception)
