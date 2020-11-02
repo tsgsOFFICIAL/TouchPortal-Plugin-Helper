@@ -77,7 +77,7 @@
         </Style>
     </Page.Resources>
     <Grid>
-        <TextBlock x:Name="DragAndDropTextblock" Background="#383838" Foreground="GhostWhite" Margin="0,30,0,0" Padding="0,10,0,0" AllowDrop="True" Drop="TextBlock_Drop" Text="Drag and drop your 'entry.tp' file here" FontFamily="Roboto" FontSize="26" FontWeight="SemiBold" TextAlignment="Center" ToolTip="Drop it anywhere on this page"/>
+        <TextBlock x:Name="DragAndDropTextblock" Background="#383838" Foreground="GhostWhite" Margin="0,30,0,0" Padding="0,10,0,0" AllowDrop="True" Drop="TextBlock_Drop" Text="Drag and drop your 'entry.tp' file here" FontFamily="Roboto" FontSize="26" FontWeight="SemiBold" TextAlignment="Center" ToolTip="The import feature is currently disabled, please hang tight" Cursor="No" />
         
         <TextBlock FontSize="20" Foreground="GhostWhite" Text="Export To:" FontFamily="Roboto" Margin="137,266,571,153.6" ToolTip="This is the absolute path to where you want to export the file to"/>
         <TextBox x:Name="ExportLocation" FontSize="16" FontFamily="Roboto" Opacity="0.85" Margin="234,266,120,158.6" BorderThickness="0.6" ToolTip="This is the absolute path to where you want to export the file to"/>
